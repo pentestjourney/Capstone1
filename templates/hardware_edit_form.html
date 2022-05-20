@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ hardware.name }}</h1>
+
+{% if hardware.photo_url %}
+<img class="img-fluid" src="{{ hardware.photo_url }}">
+{% endif %}
+<p>{{hardware.condition}}</p>
+<p>{{hardware.price}}</p>
+<p>{{hardware.notes}}</p>
+
+
+
+<h2>Update</h2>
+
+<form method="POST">
+    {% include "_form.html" %}
+    <button class="btn btn-primary" type="submit">Update</button>
+</form>
+
+{% endblock %}

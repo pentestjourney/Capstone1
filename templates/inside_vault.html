@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Hardware Listings</h1>
+<div class="row hardware-listing">
+
+    {% for hardware in hardwares %}
+    <div class="col-3">
+        <img class="img-thumbnail" src="{{ hardware.image_url() }}">
+        <p>{{hardware.condition}}</p>
+        <p>USD ${{hardware.price}}</p>
+        <p>{{hardware.notes}}</p>
+        <a href="{{ url_for('edit_hardware', hardware_id=hardware.id) }}">{{ hardware.name }}</a>
+        {% if hardware.available %} <b> is available!</b> {% endif %}
+    </div>
+
+    {% else %}
+    <div class="col-12">No Listings yet.</div>
+    {% endfor %}
+
+</div>
+
+
+<a class="btn btn-primary" href="{{ url_for('add_hardware') }}">Add to Listings</a>
+
+{% endblock %}
